@@ -1,6 +1,7 @@
 package com.thekiharas.daigosfirstmod;
 
 import com.mojang.logging.LogUtils;
+import com.thekiharas.daigosfirstmod.items.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -20,9 +21,12 @@ public class DaigosFirstMod
     public static final String MOD_ID = "daigosfirstmod";
     private static final Logger LOGGER = LogUtils.getLogger();
 
+    // Very important comment!!
     public DaigosFirstMod()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        // Wire up the Event Bus
+        ModItems.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
